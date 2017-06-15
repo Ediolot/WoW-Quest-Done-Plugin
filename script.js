@@ -16,6 +16,7 @@ var emptyObject = function(obj) {
   return (obj === undefined) || (obj === null) || ((Object.keys(obj).length === 0) && (obj.constructor === Object));
 }
 
+/* Checks if the data is already saved and save it. */
 var checkLocalStorage = function(onFinish) {
   chrome.storage.local.get(kDataName, function(items) {
     var save = {};
@@ -23,19 +24,19 @@ var checkLocalStorage = function(onFinish) {
     save[kDefaultDataName] = kDefaultQuestConfig;
 
     if (emptyObject(items)) {
-      // Si no estaban guardados
+      // Data was not saved
 
       for (var i in kDefaultQuestConfig) {
         questConfig[i] = save[kDataName][i] = kDefaultQuestConfig[i];
       }
     } else {
-      // Si estaban guardados
+      // Data was saved
       for (var i in items[kDataName]) {
         questConfig[i] = save[kDataName][i] = items[kDataName][i];
       }
     }
 
-    // Guarda los valores
+    // Save data
     chrome.storage.local.set(save);
     if (typeof(onFinish) === "function") {
       onFinish();
@@ -45,6 +46,7 @@ var checkLocalStorage = function(onFinish) {
   chrome.storage.local.set(questConfig);
 }
 
+/* Get the url with the quests done for a character name. */
 var generateUrl = function(name) {
   var base = questConfig.preffix + "/" + questConfig.zone + "/" + name + "?";
   if (questConfig.fields) { base += "&fields=" + questConfig.fields; }
@@ -52,6 +54,7 @@ var generateUrl = function(name) {
   return base;
 }
 
+/* Http Get request. */
 var httpGet = function(url) {
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open( "GET", url, false );
@@ -59,6 +62,7 @@ var httpGet = function(url) {
   return xmlHttp.responseText;
 }
 
+/* Checks if a quest is completed for a character name. */
 var searchQuestInName = function(quest, name) {
 
   var response = httpGet(generateUrl(name));
@@ -87,12 +91,14 @@ var searchQuestInName = function(quest, name) {
   };
 }
 
+/* Searchs if the quest in the url is completed for any of the characters. */
 var searchQuest = function(info, tab) {
   var quest = info.linkUrl.match(/(?:\/quest=)(\d+)/);
 
   var parameters = {
     id: kQuestDialogBoxId
   };
+  // Remove previous dialog box
   chrome.tabs.executeScript({
     code: '(' + function(params) {
       try {
@@ -114,6 +120,7 @@ var searchQuest = function(info, tab) {
     return;
   }
 
+  // Generate dialog box
   parameters.names = questConfig.names;
   chrome.tabs.executeScript({
     code: '(' + function(params) {
@@ -177,6 +184,7 @@ var searchQuest = function(info, tab) {
     } + ')(' + JSON.stringify(parameters) + ');'
   });
 
+  // Search and update dialog box for each character
   for (var i in questConfig.names) {
     var result = searchQuestInName(+quest[1], questConfig.names[i]);
 
