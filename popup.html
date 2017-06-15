@@ -1,0 +1,46 @@
+<!-- Contiene la configuración -->
+<!doctype html>
+<html>
+  <head>
+    <title>WoW Quest Plugin</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1 class="title-big">WoW Quest Plugin</h1>
+    <h2 class="title-small">Configuration</h2>
+    <p class="input-zone">
+      <span class="input-title">Names</span><br>
+      <input class="input-text" id="names" type="text" name="names" placeholder="Character names separated by comma">
+    </p>
+    <p class="input-zone">
+      <span class="input-title">ApiKey</span><br>
+      <input class="input-text" id="apiKey" type="text" name="apiKey" placeholder="Your Blizzard api key">
+    </p>
+    <p class="input-zone">
+      <span class="input-title">Fields</span><br>
+      <input class="input-text" id="fields" type="text" name="fields" placeholder="Only one supported is 'quests'">
+    </p>
+    <p class="input-zone">
+      <span class="input-title">Zone</span><br>
+      <input class="input-text" id="zone" type="text" name="zone" placeholder="Character zone">
+    </p>
+    <p class="input-zone">
+      <span class="input-title">Preffix</span><br>
+      <input class="input-text" id="preffix" type="text" name="preffix" placeholder="Url preffix">
+    </p>
+    <button id="save-button" type="button" name="button">Save</button>
+    <button id="default-button" type="button" name="button">Defaults</button>
+    <span id="save-msg" class="saved"></span>
+    <script src="popup.js"></script>
+    <div class="licence">
+      Icons made by
+      <a href="http://www.freepik.com" title="Freepik">Freepik</a>
+      &amp;
+      <a href="http://www.flaticon.com/authors/egor-rumyantsev" title="Egor Rumyantsev">Egor Rumyantsev</a>
+      from
+      <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>
+      are licensed by
+      <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+    </div>
+  </body>
+</html>

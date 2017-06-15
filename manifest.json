@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "WoW Quest Done Plugin",
+  "description": "Check if the quest link represents a quest already made by any of the character names",
+  "version": "1.3.4",
+  "browser_action": {
+    "default_icon": "chest.png",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["script.js"]
+  },
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    "storage"
+  ],
+  "icons": {
+    "16": "chest.png",
+    "256": "chest-256.png"
+  }
+}
