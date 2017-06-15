@@ -2,7 +2,7 @@
 
 [View in the chrome app store](https://chrome.google.com/webstore/detail/wow-quest-done-plugin/cohoepokaipgjnpcplbhacnplilepbmh?hl=es)
 
-[[https://github.com/ediolot/WoW-Quest-Done-Plugin/blob/master/img/chest-128.png]]
+![](https://cdn.rawgit.com/Ediolot/WoW-Quest-Done-Plugin/1cd34370/chest-128.png)
 Checks if a quest has been completed for different characters.
 
 # Files
