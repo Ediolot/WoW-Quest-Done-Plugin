@@ -25,7 +25,6 @@ var checkLocalStorage = function(onFinish) {
 
     if (emptyObject(items)) {
       // Data was not saved
-
       for (var i in kDefaultQuestConfig) {
         questConfig[i] = save[kDataName][i] = kDefaultQuestConfig[i];
       }
@@ -42,8 +41,6 @@ var checkLocalStorage = function(onFinish) {
       onFinish();
     }
   });
-
-  chrome.storage.local.set(questConfig);
 }
 
 /* Get the url with the quests done for a character name. */
