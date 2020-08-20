@@ -1,4 +1,4 @@
-# WoW Quest Done Plugin
+# WoW Quest Done Plugin (OUTDATED)
 
 [View in the chrome app store](https://chrome.google.com/webstore/detail/wow-quest-done-plugin/cohoepokaipgjnpcplbhacnplilepbmh?hl=es)
 
